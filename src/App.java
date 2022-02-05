@@ -16,9 +16,9 @@ public class App {
         Player player1 = new Player(); // prints Player created
         Player player2 = new Player(); // prints Player created
 
-        pick3Cards(player1, player2, mazzo);
+        for (int i = 0; i < 3; i++) {
+            player1.pickCard(mazzo);// 
 
-        
 
         String tmpCard1 = player1.throwCard();
         System.out.printf("player 1 throws: " + tmpCard1 + '\n');
@@ -46,14 +46,4 @@ final Player isWinner(Player player1, String card1, Player player2, String card2
     else {
         return player2;}
     }
-
-
-final void pick3Cards(Player player1, Player player2, Mazzo mazzo){
-    for (int i = 0; i < 3; i++) {
-        String tmpCard1 = mazzo.getCard();
-        String tmpCard2 = mazzo.getCard();
-        player1.addCard(tmpCard1);
-        player2.addCard(tmpCard2);
-    }
-}
 }

@@ -17,7 +17,7 @@ public class Player{
         this.wonCards.add(card2);
     }
 
-    public void addCard(String tmpCard){
+    public void pickCard(String tmpCard){
         playerCards.add(tmpCard);
         //System.out.println("Card added to players deck");
     }
@@ -33,4 +33,7 @@ public class Player{
         this.playerCards.remove(randomNum);
         return tmpCard;        
     }
+    
 }
+
+            
