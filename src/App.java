@@ -18,7 +18,8 @@ public class App {
             player2.pickCard(mazzo);
         }
 
-        player1.throwCard(); // test this method
+        //player1.throwCard(); // test this method
+        System.out.println("This is a testing branch");
 
     }
 
@@ -31,11 +32,11 @@ final void isWinner(Player player1, String card1, Player player2, String card2){
 }
 
 
-final void gameTurn(Player player1, Player player2, Mazzo mazzo){
+/*final void gameTurn(Player player1, Player player2, Mazzo mazzo){
     String card1 = player1.throwCard();
     String card2 = player2.randomThrowCard();
     isWinner(player1, card1, player2, card2);
     player1.pickCard(mazzo);
     player2.pickCard(mazzo);
-}
+}*/
 }

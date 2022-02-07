@@ -34,7 +34,7 @@ public class Player{
         return tmpCard;        
     }
 
-    public String throwCard(){
+    /**public String throwCard(){
         Scanner sc= new Scanner(System.in);
         while(sc.hasNext()){
             System.out.printf("Choose a card to throw: " + this.playerCards + "\n");
@@ -49,8 +49,9 @@ public class Player{
         sc.close();
         return card;
     }
+    */
 }
 
-}
+
 
             
