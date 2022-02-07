@@ -3,7 +3,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Mazzo{
-    ArrayList<String> cards; //class attribute
+    private ArrayList<String> cards; //class attribute
+    private String briscola;
 
     public Mazzo(){
         cards = new ArrayList<String>();
@@ -57,7 +58,7 @@ public class Mazzo{
 
     public String getCard(){
         int size = cards.size();
-        int randomNum = ThreadLocalRandom.current().nextInt(1, size);
+        int randomNum = ThreadLocalRandom.current().nextInt(size);
         String tmpCard = cards.get(randomNum);
         this.cards.remove(randomNum);
         return tmpCard;
@@ -65,6 +66,10 @@ public class Mazzo{
 
     public boolean hasCards(){
         return !this.cards.isEmpty();
+    }
+
+    public int getNumberOfCards(){
+        return this.cards.size();
     }
 
 

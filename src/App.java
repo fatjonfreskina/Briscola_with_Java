@@ -1,8 +1,10 @@
-// Questions:
-// 1) Do you need to import the classes and methods (are they called packages?)
-// in each .java file? Probably not
-// 2) Everything public? Come on bro
-// 3) What about static and final? 
+//TODOS:
+//Decide who picks the card based on previous winner
+//Count points at the end
+//Select the winner 
+//Create permutation of mazzo -> 
+//change method pickcard (not random any more but pick first on top)
+//create briscola as mazzo[-1]
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -18,25 +20,37 @@ public class App {
             player2.pickCard(mazzo);
         }
 
-        //player1.throwCard(); // test this method
-        System.out.println("This is a testing branch");
-
+        while (player1.hasCards()){
+            gameTurn(player1, player2, mazzo);
+            System.out.printf("Remaining cards: " + mazzo.getNumberOfCards() + "\n");
+            System.out.printf("Player 1 won: " + player1.getNumberOfWonCards() + " cards \n");
+            System.out.printf("Player 2 won: " + player2.getNumberOfWonCards() + " cards \n");
+        }
     }
 
-final void isWinner(Player player1, String card1, Player player2, String card2){
-    int randomNum = ThreadLocalRandom.current().nextInt(1, 2);
+final static void isWinner(Player player1, String card1, Player player2, String card2, Mazzo mazzo){
+    int randomNum = ThreadLocalRandom.current().nextInt(1, 3);
     if (randomNum == 1){ //CASE PLAYER 1 WON -> ADD TO PLAYER 1 WONCARDS
-        player1.addToWonCards(card1, card2);}
+        player1.addToWonCards(card1, card2);
+        System.out.println("Player 1 won");
+        if (mazzo.hasCards()){
+            player1.pickCard(mazzo);
+            player2.pickCard(mazzo);
+        }
+    }
     else {
-        player2.addToWonCards(card1, card2);}
+        player2.addToWonCards(card1, card2);
+        System.out.println("Player 2 won");
+        if (mazzo.hasCards()){
+            player2.pickCard(mazzo);
+            player1.pickCard(mazzo);
+        }
+    }
 }
-
-
-/*final void gameTurn(Player player1, Player player2, Mazzo mazzo){
-    String card1 = player1.throwCard();
+final static void gameTurn(Player player1, Player player2, Mazzo mazzo){
+    String card1 = player1.randomThrowCard();
     String card2 = player2.randomThrowCard();
-    isWinner(player1, card1, player2, card2);
-    player1.pickCard(mazzo);
-    player2.pickCard(mazzo);
-}*/
+    isWinner(player1, card1, player2, card2, mazzo);
+
+}
 }

@@ -2,14 +2,18 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Player{
-    ArrayList<String> playerCards;                              //class attribute, cards the player can play
-    ArrayList<String> wonCards;                                 //cards the player won 
+    private ArrayList<String> playerCards;
+    private ArrayList<String> wonCards;        
 
 
     public Player(){
         playerCards = new ArrayList<String>();
         wonCards = new ArrayList<String>();
         System.out.println("Player created");
+    }
+
+    public int getNumberOfWonCards(){
+        return this.wonCards.size();
     }
 
     public void addToWonCards(String card1, String card2){        
@@ -26,31 +30,46 @@ public class Player{
         System.out.println(this.playerCards);
     }
 
-    public String randomThrowCard(){        //this is used by the dumb pc
+    public String randomThrowCard(){        //this is used by dumb pc
         int size = playerCards.size();
-        int randomNum = ThreadLocalRandom.current().nextInt(1, size);
+        int randomNum = ThreadLocalRandom.current().nextInt(size);
         String tmpCard = playerCards.get(randomNum);
         this.playerCards.remove(tmpCard);
         return tmpCard;        
     }
 
-    /**public String throwCard(){
-        Scanner sc= new Scanner(System.in);
-        while(sc.hasNext()){
+    public String throwCard(){
+        Scanner sc = new Scanner(System.in);
+        String card = null;
+        boolean done = false;
+        while (!done){
             System.out.printf("Choose a card to throw: " + this.playerCards + "\n");
             System.out.println("Enter the card you want to throw: ");
-            String card = sc.next();
-            System.out.printf("You choose: " + card + "\n");
+            card = sc.nextLine();
             if (this.playerCards.contains(card)){
                 this.playerCards.remove(card);
-                
-                break;
+                sc.close();
+                this.playerCards.remove(card);
+                return card;
             }
+        }
         sc.close();
-        return card;
+        return card;   
     }
-    */
+    public boolean hasCards(){
+        return !this.playerCards.isEmpty();
+    }
+
+    /*public int getFinalScore(){
+        must be something like:
+        tot = 0    
+        for element in list:
+            tot += element.getCardScore()
+
+    }*/
+    
 }
+
 
 
 
