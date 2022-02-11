@@ -12,8 +12,8 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         Mazzo mazzo = new Mazzo();     //mazzo object has getCard, hasCards
-        Player player1 = new Player(); // prints Player created
-        Player player2 = new Player(); // prints Player created
+        Player player1 = new Player("Johnny"); // prints Player created
+        Player player2 = new Player("Sins"); // prints Player created
 
         for (int i = 0; i < 3; i++) { // First 3 cards
             player1.pickCard(mazzo);
