@@ -2,14 +2,16 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Player{
+    private String name;
     private ArrayList<String> playerCards;
     private ArrayList<String> wonCards;        
 
 
-    public Player(){
+    public Player(String inputName){
+        this.name = inputName;
         playerCards = new ArrayList<String>();
         wonCards = new ArrayList<String>();
-        System.out.println("Player created");
+        System.out.println("Player " + inputName + " created");
     }
 
     public int getNumberOfWonCards(){
