@@ -11,7 +11,7 @@ public class Player{
         this.name = inputName;
         playerCards = new ArrayList<String>();
         wonCards = new ArrayList<String>();
-        System.out.println("Player " + inputName + " created");
+        System.out.println("Player " + name + " created");
     }
 
     public int getNumberOfWonCards(){
@@ -37,6 +37,7 @@ public class Player{
         int randomNum = ThreadLocalRandom.current().nextInt(size);
         String tmpCard = playerCards.get(randomNum);
         this.playerCards.remove(tmpCard);
+        System.out.printf(this.name + " throws " + tmpCard + "\n");
         return tmpCard;        
     }
 
@@ -64,9 +65,10 @@ public class Player{
 
     /*public int getFinalScore(){
         must be something like:
-        tot = 0    
-        for element in list:
-            tot += element.getCardScore()
+        String tre = 
+        for (int i=0; i < wonCards.length; i++){
+
+        }
 
     }*/
     

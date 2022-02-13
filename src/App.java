@@ -1,21 +1,21 @@
 //TODOS:
-//Decide who picks the card based on previous winner
+//Decide who picks (and throws therefore) the card based on previous winner
 //Count points at the end
 //Select the winner 
 //Create permutation of mazzo -> 
 //change method pickcard (not random any more but pick first on top)
-//create briscola as mazzo[-1]
+//create briscola as mazzo[-1] Zù
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Mazzo mazzo = new Mazzo();     //mazzo object has getCard, hasCards
-        Player player1 = new Player("Johnny"); // prints Player created
-        Player player2 = new Player("Sins"); // prints Player created
+        Mazzo mazzo = new Mazzo();              //mazzo object has getCard, hasCards
+        Player player1 = new Player("Johnny");  // prints Player created
+        Player player2 = new Player("Sins");    // prints Player created
 
-        for (int i = 0; i < 3; i++) { // First 3 cards
+        for (int i = 0; i < 3; i++) {           // First 3 cards
             player1.pickCard(mazzo);
             player2.pickCard(mazzo);
         }
