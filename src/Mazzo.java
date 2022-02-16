@@ -3,12 +3,15 @@ import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Mazzo{
-    private ArrayList<String> cards; //class attribute
-    private String briscola;
+    private ArrayList<String> cards;
+    private HashMap<String,Integer> cardValue;
+    //private String briscola;
 
     public Mazzo(){
+
+        cardValue = new HashMap<String, Integer>();
         cards = new ArrayList<String>();
-        
+
         cards.add("ASSO DI COPPE");
         cards.add("DUE DI COPPE");
         cards.add("TRE DI COPPE");
@@ -53,15 +56,30 @@ public class Mazzo{
         cards.add("NOVE DI DENARI");
         cards.add("DIECI DI DENARI");
 
-
-    }
+        //RANDOMIZATION OF THE MAZZO
+        for (int i=0; i < 1600; i++){       
+            int size = cards.size();
+            int randomNum = ThreadLocalRandom.current().nextInt(size);
+            String tmpCard = cards.get(randomNum);
+            this.cards.remove(tmpCard);
+            cards.add(tmpCard);
+        }
+        
+        //IF YOU WIN ONE OF THESE CARDS YOU GET -> INT POINTS AT THE END
+        this.cardValue.put("ASSO", 11);
+        this.cardValue.put("TRE", 10);
+        this.cardValue.put("OTTO", 2);
+        this.cardValue.put("NOVE", 3);
+        this.cardValue.put("DIECI", 4);
+    
+        }
 
     public String getCard(){
-        int size = cards.size();
-        int randomNum = ThreadLocalRandom.current().nextInt(size);
-        String tmpCard = cards.get(randomNum);
-        this.cards.remove(randomNum);
+        
+        String tmpCard = cards.get(0); //since it is randomized, we can treat it like a stack and pick the first one
+        this.cards.remove(tmpCard);
         return tmpCard;
+
     }
 
     public boolean hasCards(){
@@ -72,5 +90,24 @@ public class Mazzo{
         return this.cards.size();
     }
 
+    public void  printMazzo(){
+        System.out.println(cards.toString());
+        System.out.printf("Number of cards: " + Integer.toString(cards.size()) + "\n");
+    }
+
+    public int getValue(String card){
+        return this.cardValue.get(card);
+    }
+
+    public String[] getKeys(){
+        String[] keys = new String[this.cardValue.size()];
+
+        int index = 0;
+        for (String str : this.cardValue.keySet()){
+            keys[index++] = str;
+        }
+        return keys;
+    }
 
 }
+
