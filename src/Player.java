@@ -63,16 +63,24 @@ public class Player{
         return !this.playerCards.isEmpty();
     }
 
-    /*public int getFinalScore(){
-        must be something like:
-        String tre = 
-        for (int i=0; i < wonCards.length; i++){
+    
+    public int getFinalScore(Mazzo mazzo){
+        int total = 0;
+        for (String card:this.wonCards){
+            for (String word:mazzo.getKeys()){
+                if (card.contains(word)){
+                    total += mazzo.getValue(word);
+                }
+                else {
+                    total += 0;
+                }
+            }
 
         }
+        return total;
+        }
 
-    }*/
-    
-}
+    }
 
 
 
